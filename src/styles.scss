@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+#container {
+  margin: 10% 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .user {
+    padding: 10px;
+    display: grid;
+    column-gap: 10px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    .likes {
+      padding-top: 10px;
+      grid-column: 1/2;
+      grid-row: 1/3;
+      width: 30px;
+      background-color: hsl(223, 19%, 93%);
+      border: none;
+      border-radius: 5px;
+    }
+    .user_header {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      display: flex;
+
+      justify-content: space-between;
+      .user-information {
+        display: flex;
+        gap: 20px;
+      }
+      .current-user-buttons {
+        display: flex;
+      }
+    }
+  }
+  .currentUser {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    input {
+      width: 80%;
+      height: 60px;
+    }
+    button {
+      height: 30px;
+    }
+  }
+}
+.reply_user {
+  margin-left: 50px;
+}
+.btn-reply,
+.btn-edit,
+.btn-delete {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.btn-send {
+  background-color: hsl(238, 40%, 52%);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 5px;
+}
