@@ -7,23 +7,23 @@
   .user {
     padding: 10px;
     display: grid;
-    column-gap: 10px;
+    gap: 10px;
     background-color: hsl(0, 0%, 100%);
     border-radius: 10px;
     .likes {
-      padding-top: 10px;
-      grid-column: 1/2;
-      grid-row: 1/3;
       width: 30px;
+      grid-column: 1/1;
+      grid-row: 1/3;
+      padding-top: 10px;
       background-color: hsl(223, 19%, 93%);
       border: none;
       border-radius: 5px;
     }
+
     .user_header {
       grid-column: 2/3;
       grid-row: 1/2;
       display: flex;
-
       justify-content: space-between;
       .user-information {
         display: flex;

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Replys } from 'src/app/model';
+import { Replys, User } from 'src/app/model';
 
 @Component({
   selector: 'app-item-replys',
@@ -8,7 +8,9 @@ import { Replys } from 'src/app/model';
 })
 export class ItemReplysComponent implements OnInit {
   @Input() replyItem!: Replys;
+  @Input() current_user!: User;
   replyInput = false;
+
   toggleReply() {
     this.replyInput = !this.replyInput;
   }

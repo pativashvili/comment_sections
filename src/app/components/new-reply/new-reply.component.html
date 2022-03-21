@@ -1,12 +1,17 @@
-<div class="user reply_user currentUser">
-  <img src="#" />
-  <input placeholder="Add a comment..." type="text" #input />
+<div class="user reply_user currentUser" *ngIf="not_replied">
+  <img src="../../../assets/{{ current_user?.image?.png }}" />
+  <input
+    placeholder="Add a comment..."
+    type="text"
+    [(ngModel)]="reply_inputed_value"
+  />
   <button class="btn-send" (click)="getContent()">REPLY</button>
 </div>
 
 <app-replied-comment
   *ngIf="replied"
-  [current_user]="currentUser"
-  [value]="input.value"
+  [reply_users]="users"
+  [current_user]="current_user"
+  [value]="reply_inputed_value"
 >
 </app-replied-comment>

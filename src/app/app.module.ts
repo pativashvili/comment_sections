@@ -8,6 +8,7 @@ import { ItemReplysComponent } from './components/comment-shell/comment-item/ite
 import { CurrentItemComponent } from './components/comment-shell/current-item/current-item.component';
 import { NewReplyComponent } from './components/new-reply/new-reply.component';
 import { RepliedCommentComponent } from './components/new-reply/replied-comment/replied-comment.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { RepliedCommentComponent } from './components/new-reply/replied-comment/
     NewReplyComponent,
     RepliedCommentComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

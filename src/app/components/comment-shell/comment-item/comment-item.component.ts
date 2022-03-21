@@ -8,6 +8,7 @@ import { User, UsersComments } from 'src/app/model';
 })
 export class CommentItemComponent implements OnInit {
   @Input() commentItem!: UsersComments;
+  @Input() current_user!: User;
 
   isReplayActive = false;
   toggleReply() {

@@ -1,6 +1,13 @@
 <div id="container">
-  <app-comment-item *ngFor="let item of comments" [commentItem]="item">
+  <app-comment-item
+    *ngFor="let item of comments"
+    [commentItem]="item"
+    [current_user]="currentUser"
+  >
   </app-comment-item>
 
-  <app-current-item [current_user]="currentUser"> </app-current-item>
+  <app-current-item
+    [current_user]="currentUser"
+    [users]="comments"
+  ></app-current-item>
 </div>
