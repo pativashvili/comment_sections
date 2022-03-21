@@ -8,6 +8,10 @@ import { Replys } from 'src/app/model';
 })
 export class ItemReplysComponent implements OnInit {
   @Input() replyItem!: Replys;
+  replyInput = false;
+  toggleReply() {
+    this.replyInput = !this.replyInput;
+  }
   constructor() {}
 
   ngOnInit(): void {}

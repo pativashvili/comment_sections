@@ -6,6 +6,8 @@ import { CommentShellComponent } from './components/comment-shell/comment-shell.
 import { CommentItemComponent } from './components/comment-shell/comment-item/comment-item.component';
 import { ItemReplysComponent } from './components/comment-shell/comment-item/item-replys/item-replys.component';
 import { CurrentItemComponent } from './components/comment-shell/current-item/current-item.component';
+import { NewReplyComponent } from './components/new-reply/new-reply.component';
+import { RepliedCommentComponent } from './components/new-reply/replied-comment/replied-comment.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { CurrentItemComponent } from './components/comment-shell/current-item/cu
     CommentItemComponent,
     ItemReplysComponent,
     CurrentItemComponent,
+    NewReplyComponent,
+    RepliedCommentComponent,
   ],
   imports: [BrowserModule],
   providers: [],

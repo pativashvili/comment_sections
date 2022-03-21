@@ -8,6 +8,12 @@ import { User, UsersComments } from 'src/app/model';
 })
 export class CommentItemComponent implements OnInit {
   @Input() commentItem!: UsersComments;
+
+  isReplayActive = false;
+  toggleReply() {
+    this.isReplayActive = !this.isReplayActive;
+  }
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,0 +1,12 @@
+<div class="user reply_user currentUser">
+  <img src="#" />
+  <input placeholder="Add a comment..." type="text" #input />
+  <button class="btn-send" (click)="getContent()">REPLY</button>
+</div>
+
+<app-replied-comment
+  *ngIf="replied"
+  [current_user]="currentUser"
+  [value]="input.value"
+>
+</app-replied-comment>

@@ -1,5 +1,5 @@
-<div class="user user1">
-  <input class="likes" type="number" [value]="commentItem.score" />
+<div class="user">
+  <input class="likes" type="number" [value]="commentItem.score" #input />
 
   <div class="user_header">
     <div class="user-information">
@@ -8,7 +8,7 @@
       <h5>{{ commentItem.createdAt }}</h5>
     </div>
 
-    <button class="btn-reply">
+    <button class="btn-reply" (click)="toggleReply()">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13">
         <path
           d="M.227 4.316 5.04.16a.657.657 0 0 1 1.085.497v2.189c4.392.05 7.875.93 7.875 5.093 0 1.68-1.082 3.344-2.279 4.214-.373.272-.905-.07-.767-.51 1.24-3.964-.588-5.017-4.829-5.078v2.404c0 .566-.664.86-1.085.496L.227 5.31a.657.657 0 0 1 0-.993Z"
@@ -23,8 +23,7 @@
     {{ commentItem.content }}
   </p>
 </div>
+<app-new-reply *ngIf="isReplayActive"> </app-new-reply>
 
-<app-item-replys
-  *ngFor="let reply of commentItem.replies"
-  [replyItem]="reply"
-></app-item-replys>
+<app-item-replys *ngFor="let reply of commentItem.replies" [replyItem]="reply">
+</app-item-replys>
