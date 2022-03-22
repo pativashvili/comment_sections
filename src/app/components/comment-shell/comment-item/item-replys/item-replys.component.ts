@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Replys, User } from 'src/app/model';
 
 @Component({
@@ -9,12 +9,24 @@ import { Replys, User } from 'src/app/model';
 export class ItemReplysComponent implements OnInit {
   @Input() replyItem!: Replys;
   @Input() current_user!: User;
+  @Output() replyIdOmitter: EventEmitter<number> = new EventEmitter<number>();
   replyInput = false;
+  @Output() onReplyToReplyHanlder: EventEmitter<{
+    id: number;
+    content: string;
+  }> = new EventEmitter<{ id: number; content: string }>();
 
-  toggleReply() {
-    this.replyInput = !this.replyInput;
-  }
   constructor() {}
 
+  remove_reply() {
+    this.replyIdOmitter.emit(this.replyItem.id);
+  }
+
+  handleReply() {
+    this.onReplyToReplyHanlder.emit({
+      content: this.replyItem.content,
+      id: this.replyItem.id,
+    });
+  }
   ngOnInit(): void {}
 }

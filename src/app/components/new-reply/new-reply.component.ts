@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommentsService } from 'src/app/comments.service';
 import { User, UsersComments } from 'src/app/model';
 
@@ -9,26 +8,18 @@ import { User, UsersComments } from 'src/app/model';
   styleUrls: ['./new-reply.component.scss'],
 })
 export class NewReplyComponent implements OnInit {
+  @Output() onReply: EventEmitter<string> = new EventEmitter<string>();
+
   users!: UsersComments[];
   current_user!: User;
-  test: FormsModule = '';
   not_replied: boolean = true;
   replied: boolean = !this.not_replied;
   reply_inputed_value = '';
-  getContent() {
-    this.replied = false;
-    this.not_replied = false;
-    let new_user = {
-      score: 0,
-      id: 0,
-      content: this.reply_inputed_value,
-      user: this.current_user,
-      replyingTo: 'someone',
-      createdAt: '1min ago',
-    };
-    this.users.forEach((element) => {
-      element.replies.push(new_user);
-    });
+
+  reply() {
+    if (this.reply_inputed_value) {
+      this.onReply.emit(this.reply_inputed_value);
+    }
   }
 
   constructor(private commentsService: CommentsService) {}

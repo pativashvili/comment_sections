@@ -1,5 +1,9 @@
 <div id="container">
   <app-comment-item
+    (mainCommentIdHandler)="removeComment($event)"
+    (onReplyHanlder)="handleMainReply($event)"
+    (replyCommentIdHandler)="handleReplyForReply($event)"
+    (onReplayIdHandler)="handleReplyIdForDelete($event)"
     *ngFor="let item of comments"
     [commentItem]="item"
     [current_user]="currentUser"
@@ -8,6 +12,10 @@
 
   <app-current-item
     [current_user]="currentUser"
-    [users]="comments"
+    (onMainComment)="handleMainComment($event)"
   ></app-current-item>
+  <!-- <app-current-item
+    [current_user]="currentUser"
+    [users]="comments"
+  ></app-current-item> -->
 </div>

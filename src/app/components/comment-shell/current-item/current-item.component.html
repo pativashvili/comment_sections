@@ -1,13 +1,5 @@
-<!-- <app-replied-comment
-  *ngIf="closed"
-  [current_user]="current_user"
-  [value]="input.value"
->
-</app-replied-comment> -->
-
 <div class="user currentUser">
   <img src="../../../../assets/{{ current_user?.image?.png }}" />
-  <input placeholder="Add a comment..." #input />
-  <!-- <button (click)="addComment()" class="btn-send">SEND</button> -->
-  <button (click)="addComment(input.value)" class="btn-send">SEND</button>
+  <input [(ngModel)]="content" placeholder="Add a comment..." #input />
+  <button (click)="addComment()" class="btn-send">SEND</button>
 </div>

@@ -7,10 +7,5 @@ import { User, UsersComments } from 'src/app/model';
   styleUrls: ['./replied-comment.component.scss'],
 })
 export class RepliedCommentComponent implements OnInit {
-  @Input() value!: string;
-  @Input() reply_users!: UsersComments[];
-  @Input() current_user!: User;
-  constructor() {}
-
   ngOnInit(): void {}
 }
