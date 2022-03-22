@@ -9,8 +9,11 @@ import { Replys, User } from 'src/app/model';
 export class ItemReplysComponent implements OnInit {
   @Input() replyItem!: Replys;
   @Input() current_user!: User;
+
   @Output() replyIdOmitter: EventEmitter<number> = new EventEmitter<number>();
   replyInput = false;
+  editing = false;
+
   @Output() onReplyToReplyHanlder: EventEmitter<{
     id: number;
     content: string;
@@ -20,6 +23,13 @@ export class ItemReplysComponent implements OnInit {
 
   remove_reply() {
     this.replyIdOmitter.emit(this.replyItem.id);
+  }
+  edit_reply() {
+    this.editing = !this.editing;
+  }
+  handleUpdatedComment(comm: string) {
+    this.replyItem.content = comm;
+    this.editing = false;
   }
 
   handleReply() {

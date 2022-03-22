@@ -9,6 +9,7 @@ import { CurrentItemComponent } from './components/comment-shell/current-item/cu
 import { NewReplyComponent } from './components/new-reply/new-reply.component';
 import { RepliedCommentComponent } from './components/new-reply/replied-comment/replied-comment.component';
 import { FormsModule } from '@angular/forms';
+import { ReplyEditComponent } from './components/comment-shell/comment-item/item-replys/reply-edit/reply-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     CurrentItemComponent,
     NewReplyComponent,
     RepliedCommentComponent,
+    ReplyEditComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

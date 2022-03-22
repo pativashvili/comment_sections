@@ -1,3 +1,7 @@
+body {
+  background-color: hsl(223, 19%, 93%);
+  font-family: "Rubik", sans-serif;
+}
 #container {
   margin: 10% 20%;
   display: flex;
@@ -8,8 +12,12 @@
     padding: 10px;
     display: grid;
     gap: 10px;
+    column-gap: 20px;
     background-color: hsl(0, 0%, 100%);
     border-radius: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
     .likes {
       width: 30px;
       grid-column: 1/1;
@@ -48,7 +56,7 @@
   }
 }
 .reply_user {
-  margin-left: 50px;
+  margin-left: 100px;
 }
 .btn-reply,
 .btn-edit,
@@ -63,4 +71,14 @@
   border-radius: 3px;
   color: white;
   padding: 5px;
+}
+.edit_input {
+  width: 80%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid silver;
+}
+p {
+  font-size: 16px;
 }

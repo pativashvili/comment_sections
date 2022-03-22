@@ -1,0 +1,6 @@
+<div class="edit_area">
+  <textarea class="edit_input" #edit_area>{{ replyContent }}</textarea>
+  <button class="btn btn-send" (click)="updateReply(edit_area.value)">
+    Update
+  </button>
+</div>

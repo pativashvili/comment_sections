@@ -21,20 +21,28 @@ export class CommentItemComponent implements OnInit {
   }> = new EventEmitter<{ id: number; content: string }>();
 
   isReplayActive = false;
+  isEditActive = false;
   toggleReply() {
     this.isReplayActive = !this.isReplayActive;
   }
+  toggleEdit() {
+    this.isEditActive = !this.isEditActive;
+  }
+
   inputValue = '';
 
-  handleReplyId(id: number) {
-    this.onReplayIdHandler.emit(id);
-  }
   constructor() {}
   removeComment() {
     this.mainCommentIdHandler.emit(this.commentItem.id);
   }
   ngOnInit(): void {}
-
+  handleReplyId(id: number) {
+    this.onReplayIdHandler.emit(id);
+  }
+  handleUpdate(comm: string) {
+    this.commentItem.content = comm;
+    this.isEditActive = false;
+  }
   handleReplyForReply(item: { content: string; id: number }) {
     this.replyCommentIdHandler.emit({ content: item.content, id: item.id });
     this.toggleReply();
