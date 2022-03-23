@@ -11,6 +11,7 @@ export class CommentShellComponent implements OnInit {
   currentUser!: User;
   comments!: UsersComments[];
   replies!: Replys[];
+
   constructor(private commentsService: CommentsService) {}
 
   ngOnInit(): void {
@@ -21,14 +22,29 @@ export class CommentShellComponent implements OnInit {
   }
 
   scoreChange() {
-    /////dadas
     // commentsthis.
     // this.comments.sort((a, b) => b.score - a.score);
   }
 
-  handleMainReply(data: any) {
+  onReplyUpdateHanlder(data: { replyId: number; content: string }) {
+    this.comments.forEach((c) => {
+      c.replies.forEach((rep) => {
+        if (rep.id == data.replyId) {
+          rep.content = data.content;
+        }
+      });
+    });
+  }
+  removeComment(id: number) {
+    this.comments = this.comments.filter((item) => item.id != id);
+  }
+
+  handleMainReply(data: {
+    id: number | undefined;
+    content: string | undefined;
+  }) {
     const mainComment = this.comments.find((c) => c.id == data.id);
-    let newComment = {
+    const newComment: Replys = {
       score: 0,
       id: this.generateMaxId(),
       content: data.content,
@@ -38,11 +54,14 @@ export class CommentShellComponent implements OnInit {
     };
     mainComment?.replies.push(newComment);
   }
-  handleReplyForReply(data: any) {
-    let mainReply = this.comments.filter((item) =>
+  handleReplyForReply(data: {
+    id: number | undefined;
+    content: string | undefined;
+  }) {
+    const mainReply: UsersComments[] = this.comments.filter((item) =>
       item.replies.find((c) => c.id == data.id)
     );
-    let newReply = {
+    const newReply = {
       score: 0,
       id: this.generateMaxId(),
       content: data.content,
@@ -50,28 +69,33 @@ export class CommentShellComponent implements OnInit {
       replyingTo: '' || '',
       createdAt: new Date().getDate().toString(),
     };
-    let newReplyToadd = mainReply.filter((item) => (item.id = newReply.id));
-    this.replies.push(newReply);
+    mainReply[0].replies.push(newReply);
   }
+
   handleReplyIdForDelete(id: number) {
     this.comments.forEach(
       (item) => (item.replies = item.replies.filter((reply) => reply.id !== id))
     );
   }
+  handleMainCommentUpdate(data: { id: number; content: string }) {
+    this.comments.forEach((c) => {
+      if (c.id == data.id) {
+        c.content = data.content;
+      }
+    });
+  }
+
   generateMaxId() {
     let maxId = 1;
-    this.comments.forEach((mainComment: any) => {
+    this.comments.forEach((mainComment: UsersComments) => {
       if (mainComment.id > maxId) maxId = mainComment.id;
-      mainComment.replies.forEach((reply: any) => {
+      mainComment.replies.forEach((reply: Replys) => {
         if (reply.id > maxId) maxId = reply.id;
       });
     });
     return ++maxId;
   }
 
-  removeComment(id: number) {
-    this.comments = this.comments.filter((item) => item.id != id);
-  }
   handleMainComment(comment: string) {
     let newComment: UsersComments = {
       score: 0,

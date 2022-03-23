@@ -10,17 +10,11 @@ import { User, UsersComments } from 'src/app/model';
 export class NewReplyComponent implements OnInit {
   @Output() onReply: EventEmitter<string> = new EventEmitter<string>();
 
-  users!: UsersComments[];
+  users: UsersComments[] | undefined;
   current_user!: User;
   not_replied: boolean = true;
   replied: boolean = !this.not_replied;
   reply_inputed_value = '';
-
-  reply() {
-    if (this.reply_inputed_value) {
-      this.onReply.emit(this.reply_inputed_value);
-    }
-  }
 
   constructor(private commentsService: CommentsService) {}
 
@@ -29,5 +23,11 @@ export class NewReplyComponent implements OnInit {
       this.users = data.comments;
       this.current_user = data.currentUser;
     });
+  }
+
+  reply() {
+    if (this.reply_inputed_value) {
+      this.onReply.emit(this.reply_inputed_value);
+    }
   }
 }

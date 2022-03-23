@@ -7,36 +7,53 @@ import { Replys, User } from 'src/app/model';
   styleUrls: ['./item-replys.component.scss'],
 })
 export class ItemReplysComponent implements OnInit {
-  @Input() replyItem!: Replys;
-  @Input() current_user!: User;
-
+  @Input() replyItem: Replys | undefined;
+  @Input() current_user: User | undefined;
   @Output() replyIdOmitter: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onReplyToReplyHanlder: EventEmitter<{
+    id: number | undefined;
+    content: string;
+  }> = new EventEmitter<{ id: number | undefined; content: string }>();
+  @Output() onReplyUpdateEvent: EventEmitter<{
+    replyId: number | undefined;
+    content: string | undefined;
+  }> = new EventEmitter<{
+    replyId: number | undefined;
+    content: string | undefined;
+  }>();
+
+  isReplyTo = false;
   replyInput = false;
   editing = false;
 
-  @Output() onReplyToReplyHanlder: EventEmitter<{
-    id: number;
-    content: string;
-  }> = new EventEmitter<{ id: number; content: string }>();
-
   constructor() {}
 
+  ngOnInit(): void {}
+
   remove_reply() {
-    this.replyIdOmitter.emit(this.replyItem.id);
+    this.replyIdOmitter.emit(this.replyItem?.id);
   }
   edit_reply() {
     this.editing = !this.editing;
   }
   handleUpdatedComment(comm: string) {
-    this.replyItem.content = comm;
+    this.onReplyUpdateEvent.emit({
+      replyId: this.replyItem?.id,
+      content: comm,
+    });
+    // this.replyItem.content = comm;
     this.editing = false;
   }
 
-  handleReply() {
+  handleReply(replyContent: string) {
     this.onReplyToReplyHanlder.emit({
-      content: this.replyItem.content,
-      id: this.replyItem.id,
+      content: replyContent,
+      id: this.replyItem?.id,
     });
+    this.toggletoReply();
   }
-  ngOnInit(): void {}
+
+  toggletoReply() {
+    this.isReplyTo = !this.isReplyTo;
+  }
 }

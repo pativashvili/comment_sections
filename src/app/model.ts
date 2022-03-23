@@ -8,7 +8,7 @@ export interface User {
 
 export interface UsersComments {
   id: number;
-  content: string;
+  content: string | undefined;
   createdAt: string;
   score: number;
   user: User;

@@ -1,9 +1,11 @@
 <div id="container">
   <app-comment-item
+    (onReplyUpdate)="onReplyUpdateHanlder($event)"
     (mainCommentIdHandler)="removeComment($event)"
     (onReplyHanlder)="handleMainReply($event)"
     (replyCommentIdHandler)="handleReplyForReply($event)"
     (onReplayIdHandler)="handleReplyIdForDelete($event)"
+    (onMainCommentUpdate)="handleMainCommentUpdate($event)"
     *ngFor="let item of comments"
     [commentItem]="item"
     [current_user]="currentUser"

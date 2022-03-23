@@ -1,0 +1,5 @@
+<div class="user reply_user currentUser">
+  <img src="../../../assets/{{ current_user?.image?.png }}" />
+  <input [(ngModel)]="content" placeholder="Add a comment..." type="text" />
+  <button class="btn-send" (click)="reply()">REPLY</button>
+</div>
